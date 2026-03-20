@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de Ropa para Caballeros</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="img/banerprincipal1.png" alt="Logo tienda" />CaballeroStyle</div>
+      <div class="eslogan">Elegancia y estilo para el hombre moderno</div>
+        <style>
+          .eslogan {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            font-style: italic;
+            letter-spacing: 0.5px;
+          }
+          @media (max-width: 700px) {
+            .eslogan { font-size: 1rem; text-align: center; }
+          }
+        </style>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Productos</a></li>
+        <li><a href="#carrito">Carrito</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="inicio" class="banner-section">
+      <div class="banner">
+        <img src="img/banerprincipal1.png" alt="Banner principal" class="banner-img" />
+        <div class="banner-text">
+          <h1>Moda masculina moderna</h1>
+          <button id="comprarAhoraBtn">Comprar ahora</button>
+        </div>
+      </div>
+      <h2>Productos destacados</h2>
+      <div id="destacados" class="productos-grid"></div>
+    </section>
+    <section id="catalogo">
+      <h2>Catálogo de productos</h2>
+      <div class="filtros">
+        <input type="text" id="buscador" placeholder="Buscar producto..." />
+        <select id="filtroTipo">
+          <option value="">Todos</option>
+          <option value="camisa">Camisas</option>
+          <option value="pantalon">Pantalones</option>
+          <option value="chaqueta">Chaquetas</option>
+          <option value="zapatos">Zapatos</option>
+          <option value="bufanda">Bufandas</option>
+          <option value="calcetines">Calcetines</option>
+          <option value="cinturon">Cinturones</option>
+          <option value="corbata">Corbatas</option>
+          <option value="lentes">Lentes de sol</option>
+          <option value="pulsera">Pulseras</option>
+          <option value="reloj">Relojes</option>
+        </select>
+      </div>
+      <div id="catalogoProductos" class="productos-grid"></div>
+    </section>
+    <section id="carrito">
+      <h2>Carrito de compras</h2>
+      <div id="carritoProductos"></div>
+      <div id="carritoTotal"></div>
+      <button id="finalizarCompraBtn">Finalizar compra</button>
+    </section>
+    <section id="formularioCompra" class="modal">
+      <form id="compraForm">
+        <h2>Finalizar compra</h2>
+        <label>Nombre<input type="text" name="nombre" required /></label>
+        <label>Dirección<input type="text" name="direccion" required /></label>
+        <label>Teléfono<input type="tel" name="telefono" required /></label>
+        <label>Método de pago
+          <select name="pago" required>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="efectivo">Efectivo</option>
+          </select>
+        </label>
+        <button type="submit">Comprar</button>
+        <button type="button" id="cancelarCompraBtn">Cancelar</button>
+      </form>
+    </section>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Correo: contacto@caballerostyle.com</p>
+      <p>Redes sociales:
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a>
+      </p>
+      <p>Ubicación: ECUADOR-PASTAZA-PUYO VIA TARQUI</p>
+    </section>
+    <div id="mensajeFeedback" class="feedback"></div>
+  </main>
+  <footer>
+    <p>&copy; 2026 CaballeroStyle. Todos los derechos reservados.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
