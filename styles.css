@@ -1,3 +1,62 @@
+/* Ajustes responsivos para títulos y banner */
+.banner-section {
+  position: relative;
+}
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #bfc6f7;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 0 0.5rem 0;
+}
+.banner-img {
+  max-width: 110px;
+  margin-bottom: 0.5rem;
+}
+.banner-title {
+  font-size: 2rem;
+  color: var(--color-principal);
+  margin: 0.2rem 0 0.5rem 0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.comprar-movil {
+  display: block;
+  margin: 0 auto 1.2rem auto;
+  width: 90%;
+  max-width: 350px;
+  font-size: 1.1rem;
+}
+.destacados-title {
+  font-size: 1.3rem;
+  color: var(--color-principal);
+  margin: 0.5rem 0 1.2rem 0;
+  text-align: center;
+  font-weight: 600;
+}
+@media (max-width: 700px) {
+  .banner {
+    padding: 0.7rem 0 0.2rem 0;
+  }
+  .banner-img {
+    max-width: 70px;
+  }
+  .banner-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+  .comprar-movil {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .destacados-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+}
 /* Secciones de catálogo más organizadas y bonitas */
 .catalogo-section-title {
   font-size: 1.5rem;
