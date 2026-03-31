@@ -3,53 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda de Ropa para Caballeros</title>
+  <meta name="description" content="Tienda de ropa para caballeros con moda masculina de calidad, elegancia y estilo moderno." />
+  <meta name="theme-color" content="#1a2238" />
+  <title>CaballeroStyle - Tienda de Ropa para Caballeros</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="img/banerprincipal1.png" alt="Logo tienda" />CaballeroStyle</div>
-      <div class="eslogan">Elegancia y estilo para el hombre moderno</div>
-        <style>
-          .eslogan {
-            font-size: 1.1rem;
-            color: #fff;
-            margin-top: -0.5rem;
-            margin-bottom: 0.5rem;
-            text-align: left;
-            font-style: italic;
-            letter-spacing: 0.5px;
-          }
-          @media (max-width: 700px) {
-            .eslogan { font-size: 1rem; text-align: center; }
-          }
-        </style>
+  <a href="#contenido-principal" class="skip-link">Ir al contenido principal</a>
+  
+  <header role="banner">
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="logo">
+        <img src="img/banerprincipal1.png" alt="Logo CaballeroStyle" class="logo-img" />
+        <span>CaballeroStyle</span>
+      </div>
+      <div class="eslogan" aria-label="Eslogan">Elegancia y estilo para el hombre moderno</div>
       <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#catalogo">Productos</a></li>
-        <li><a href="#carrito">Carrito</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#inicio" aria-label="Ir a la sección de inicio" title="Inicio (Alt+1)">Inicio</a></li>
+        <li><a href="#catalogo" aria-label="Ir al catálogo de productos" title="Catálogo (Alt+2)">Productos</a></li>
+        <li><a href="#favoritos-section" aria-label="Ver mis favoritos" title="Mis Favoritos (Alt+5)">❤️ Favoritos <span class="favoritos-count" aria-live="polite">(0)</span></a></li>
+        <li><a href="#carrito-section" aria-label="Ver carrito de compras" title="Carrito (Alt+3)">Carrito <span class="carrito-count" aria-live="polite">(0)</span></a></li>
+        <li><a href="#contacto" aria-label="Ir a contacto" title="Contacto (Alt+4)">Contacto</a></li>
+        <li><button id="btnAyuda" class="btn-ayuda" aria-label="Abrir ayuda y guía del sitio" title="Ayuda (Alt+H)">?</button></li>
       </ul>
     </nav>
+    <!-- Indicador de estado del sistema (Nielsen #1) -->
+    <div id="indicadorEstado" class="indicador-estado" aria-live="polite" aria-label="Indicador de estado del sistema"></div>
   </header>
-  <main>
+  <main id="contenido-principal" role="main">
     <section id="inicio" class="banner-section">
-      <div class="banner">
-        <img src="img/banerprincipal1.png" alt="Banner principal" class="banner-img" />
+      <article class="banner">
+        <img src="img/banerprincipal1.png" alt="Banner de moda masculina moderna - CaballeroStyle" class="banner-img" />
         <div class="banner-text">
           <h1 class="banner-title">Moda masculina moderna</h1>
+          <p class="banner-subtitle">Descubre nuestra colección exclusiva de prendas para el hombre moderno</p>
         </div>
-      </div>
-      <button id="comprarAhoraBtn" class="comprar-movil">Comprar ahora</button>
+      </article>
+      <button id="comprarAhoraBtn" class="comprar-movil" aria-label="Ir al catálogo de productos">Comprar ahora</button>
       <h2 class="destacados-title">Productos destacados</h2>
-      <div id="destacados" class="productos-grid"></div>
+      <div id="destacados" class="productos-grid" role="region" aria-label="Productos destacados"></div>
     </section>
-    <section id="catalogo">
-      <h2>Catálogo de productos</h2>
-      <div class="filtros">
-        <input type="text" id="buscador" placeholder="Buscar producto..." />
-        <select id="filtroTipo">
+
+    <section id="catalogo" class="catalogo-section" aria-labelledby="catalogo-title">
+      <h2 id="catalogo-title">Catálogo de productos</h2>
+      <div class="filtros" role="search">
+        <label for="buscador" class="sr-only">Buscar producto por nombre</label>
+        <input type="text" id="buscador" placeholder="Buscar producto..." aria-label="Campo de búsqueda de productos" />
+        <label for="filtroTipo" class="sr-only">Filtrar por tipo de producto</label>
+        <select id="filtroTipo" aria-label="Filtrar por categoría">
           <option value="">Todos</option>
           <option value="camisa">Camisas</option>
           <option value="pantalon">Pantalones</option>
@@ -64,40 +65,211 @@
           <option value="reloj">Relojes</option>
         </select>
       </div>
-      <div id="catalogoProductos" class="productos-grid"></div>
+      <div id="catalogoProductos" class="productos-grid" role="region" aria-label="Catálogo de productos"></div>
     </section>
-    <section id="carrito">
-      <h2>Carrito de compras</h2>
-      <div id="carritoProductos"></div>
-      <div id="carritoTotal"></div>
-      <button id="finalizarCompraBtn">Finalizar compra</button>
+
+    <section id="favoritos-section" class="favoritos-section" aria-labelledby="favoritos-title">
+      <h2 id="favoritos-title">❤️ Mis Favoritos</h2>
+      <p class="favoritos-subtitle" style="margin-bottom: 1.5rem; color: #666;">Productos que has guardado para más tarde</p>
+      <div id="productosFavoritos" class="productos-grid" role="region" aria-label="Mis productos favoritos"></div>
+      <div id="favoritosVacio" class="estado-vacio" style="display: none;">
+        <p>No tienes favoritos guardados aún. ¡Agrega productos a favoritos haciendo clic en el corazón! ❤️</p>
+      </div>
     </section>
-    <section id="formularioCompra" class="modal">
-      <form id="compraForm">
-        <h2>Finalizar compra</h2>
-        <label>Nombre<input type="text" name="nombre" required /></label>
-        <label>Dirección<input type="text" name="direccion" required /></label>
-        <label>Teléfono<input type="tel" name="telefono" required /></label>
-        <label>Método de pago
-          <select name="pago" required>
-            <option value="tarjeta">Tarjeta</option>
-            <option value="efectivo">Efectivo</option>
-          </select>
-        </label>
-        <button type="submit">Comprar</button>
-        <button type="button" id="cancelarCompraBtn">Cancelar</button>
-      </form>
+
+    <section id="carrito-section" class="carrito-section" aria-labelledby="carrito-title">
+      <h2 id="carrito-title">Carrito de compras</h2>
+      <div id="carritoProductos" role="region" aria-live="polite" aria-label="Productos en el carrito"></div>
+      <div id="carritoTotal" class="carrito-resumen" role="region" aria-live="polite" aria-label="Resumen del carrito"></div>
+      <button id="finalizarCompraBtn" class="btn-finalizar" aria-label="Finalizar compra y proceder al pago">Finalizar compra</button>
     </section>
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Correo: contacto@caballerostyle.com</p>
-      <p>Redes sociales:
-        <a href="#">Instagram</a> |
-        <a href="#">Facebook</a>
-      </p>
-      <p>Ubicación: ECUADOR-PASTAZA-PUYO VIA TARQUI</p>
+    <!-- Modal de detalles del producto -->
+    <div id="detalleProductoModal" class="modal" role="dialog" aria-labelledby="detalles-titulo" aria-hidden="true">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Cerrar detalles del producto">&times;</button>
+        <div id="detalleProductoContent"></div>
+      </div>
+    </div>
+
+    <!-- Modal de confirmación de compra -->
+    <section id="formularioCompra" class="modal" role="dialog" aria-labelledby="compra-title" aria-hidden="true">
+      <div class="modal-compra-contenedor">
+        <h2 id="compra-title">Formulario de compra</h2>
+        <form id="compraForm" novalidate class="form-cuerpo">
+          <div class="resumen-compra" aria-live="polite" aria-label="Resumen de tu compra">
+            <h3>Tu compra:</h3>
+            <div id="resumenCarritoCompra"></div>
+          </div>
+          <fieldset>
+            <legend>Información personal</legend>
+            <div class="form-group">
+              <label for="nombreCompra">Nombre completo *</label>
+              <input type="text" id="nombreCompra" name="nombre" required aria-required="true" aria-describedby="error-nombre" />
+              <span id="error-nombre" class="error-msg" role="alert"></span>
+              <small class="ayuda-campo">Tu nombre completo para identificar tu pedido</small>
+            </div>
+            <div class="form-group">
+              <label for="emailCompra">Correo electrónico *</label>
+              <input type="email" id="emailCompra" name="email" required aria-required="true" aria-describedby="error-email" />
+              <span id="error-email" class="error-msg" role="alert"></span>
+              <small class="ayuda-campo">Te enviaremos confirmación a este correo</small>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Dirección de envío</legend>
+            <div class="form-group">
+              <label for="direccionCompra">Dirección *</label>
+              <input type="text" id="direccionCompra" name="direccion" required aria-required="true" aria-describedby="error-direccion" />
+              <span id="error-direccion" class="error-msg" role="alert"></span>
+              <small class="ayuda-campo">Vía, número y referencia</small>
+            </div>
+            <div class="form-group">
+              <label for="telefonoCompra">Teléfono *</label>
+              <input type="tel" id="telefonoCompra" name="telefono" required aria-required="true" aria-describedby="error-telefono" />
+              <span id="error-telefono" class="error-msg" role="alert"></span>
+              <small class="ayuda-campo">Mínimo 7 dígitos (se usa para contactar)</small>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Información de pago</legend>
+            <div class="form-group">
+              <label for="pagoCompra">Método de pago *</label>
+              <select id="pagoCompra" name="pago" required aria-required="true" aria-describedby="error-pago">
+                <option value="">Seleccionar...</option>
+                <option value="tarjeta">Tarjeta de crédito</option>
+                <option value="transferencia">Transferencia bancaria</option>
+                <option value="efectivo">Efectivo (contraentrega)</option>
+              </select>
+              <span id="error-pago" class="error-msg" role="alert"></span>
+              <small class="ayuda-campo">Elige tu método de pago preferido</small>
+            </div>
+          </fieldset>
+        </form>
+        <div class="form-actions">
+          <button type="submit" form="compraForm" class="btn-submit" aria-label="Confirmar compra">Confirmar compra</button>
+          <button type="button" id="cancelarCompraBtn" class="btn-cancel" aria-label="Cancelar compra y volver al carrito">Cancelar</button>
+        </div>
+      </div>
     </section>
-    <div id="mensajeFeedback" class="feedback"></div>
+
+    <section id="contacto" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto</h2>
+      <div class="contacto-container">
+        <div class="contacto-info">
+          <h3>Información de contacto</h3>
+          <p>
+            <strong>Correo:</strong> <a href="mailto:contacto@caballerostyle.com">contacto@caballerostyle.com</a>
+          </p>
+          <p>
+            <strong>Teléfono:</strong> <a href="tel:+593">+593 (123) 456-7890</a>
+          </p>
+          <p>
+            <strong>Ubicación:</strong> Ecuador - Pastaza - Puyo, Vía Tarqui
+          </p>
+          <p>
+            <strong>Redes sociales:</strong>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram">Instagram</a> | 
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Facebook">Facebook</a>
+          </p>
+        </div>
+        <form id="formularioContacto" class="contacto-form" novalidate>
+          <h3>Envíanos un mensaje</h3>
+          <div class="form-group">
+            <label for="nombreContacto">Nombre *</label>
+            <input type="text" id="nombreContacto" name="nombre" required aria-required="true" aria-describedby="error-nombre-contacto" />
+            <span id="error-nombre-contacto" class="error-msg" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="emailContacto">Correo *</label>
+            <input type="email" id="emailContacto" name="email" required aria-required="true" aria-describedby="error-email-contacto" />
+            <span id="error-email-contacto" class="error-msg" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="asuntoContacto">Asunto *</label>
+            <input type="text" id="asuntoContacto" name="asunto" required aria-required="true" aria-describedby="error-asunto-contacto" />
+            <span id="error-asunto-contacto" class="error-msg" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="mensajeContacto">Mensaje *</label>
+            <textarea id="mensajeContacto" name="mensaje" rows="5" required aria-required="true" aria-describedby="error-mensaje-contacto"></textarea>
+            <span id="error-mensaje-contacto" class="error-msg" role="alert"></span>
+          </div>
+          <button type="submit" class="btn-submit" aria-label="Enviar mensaje">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre nosotros</h3>
+        <p>CaballeroStyle es tu tienda de referencia para moda masculina de calidad, elegancia y estilo moderno.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Enlaces útiles</h3>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Atención al cliente</h3>
+        <p>Disponible de lunes a viernes: 9 AM - 6 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CaballeroStyle. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <div id="mensajeFeedback" class="feedback" role="status" aria-live="assertive"></div>
+
+  <!-- Modal de Ayuda (Nielsen Heurística #10) -->
+  <div id="modalAyuda" class="modal modal-ayuda" role="dialog" aria-labelledby="ayuda-titulo" aria-hidden="true">
+    <div class="modal-content modal-ayuda-content">
+      <button class="modal-close" aria-label="Cerrar ayuda">&times;</button>
+      <h2 id="ayuda-titulo">Guía de uso - CaballeroStyle</h2>
+      <div class="ayuda-contenido">
+        <h3>🛍️ ¿Cómo comprar?</h3>
+        <ol>
+          <li>Busca productos en el catálogo</li>
+          <li>Selecciona talla si aplica</li>
+          <li>Haz clic en "Agregar al carrito"</li>
+          <li>Ve a la sección Carrito</li>
+          <li>Finaliza tu compra completando el formulario</li>
+        </ol>
+
+        <h3>❤️ Favoritos</h3>
+        <p>Haz clic en el corazón de cualquier producto para guardarlo en favoritos. Se guardará automáticamente.</p>
+
+        <h3>🔍 Búsqueda</h3>
+        <p>Usa la barra de búsqueda o los filtros por categoría para encontrar lo que necesitas rápidamente.</p>
+
+        <h3>📋 Validación</h3>
+        <p>Todos los formularios validan automáticamente. Verás mensajes de error claros si algo no está correcto.</p>
+
+        <h3>⌨️ Atajos de teclado</h3>
+        <ul>
+          <li><kbd>Alt</kbd> + <kbd>1</kbd> → Ir a Inicio</li>
+          <li><kbd>Alt</kbd> + <kbd>2</kbd> → Ir a Productos</li>
+          <li><kbd>Alt</kbd> + <kbd>3</kbd> → Ir a Carrito</li>
+          <li><kbd>Alt</kbd> + <kbd>4</kbd> → Ir a Contacto</li>
+          <li><kbd>Alt</kbd> + <kbd>5</kbd> → Ir a Mis Favoritos</li>
+          <li><kbd>Alt</kbd> + <kbd>H</kbd> → Abrir esta ayuda</li>
+          <li><kbd>Escape</kbd> → Cerrar modales</li>
+        </ul>
+
+        <h3>♿ Accesibilidad</h3>
+        <p>Este sitio está optimizado para navegación por teclado y lectores de pantalla.</p>
+
+        <h3>📞 Soporte</h3>
+        <p>¿Tienes problemas? Usa el formulario de contacto o llámanos al <strong>+593 (123) 456-7890</strong></p>
+      </div>
+    </div>
+  </div>
   </main>
   <footer>
     <p>&copy; 2026 CaballeroStyle. Todos los derechos reservados.</p>
